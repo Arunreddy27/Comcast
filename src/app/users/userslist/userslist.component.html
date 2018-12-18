@@ -1,0 +1,29 @@
+<div class="panel panel-primary"> 
+  <div class="panel-heading">User-list</div>
+  <div class="panel-body">
+    <mat-table [dataSource]="dataSource" matSort >
+        <ng-container matColumnDef="name">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> <strong>Full Name</strong></mat-header-cell>
+          <mat-cell *matCellDef="let user">{{user.name}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="email">
+          <mat-header-cell *matHeaderCellDef ><strong>Email</strong></mat-header-cell>
+          <mat-cell *matCellDef="let user">{{user.email}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="address">
+          <mat-header-cell *matHeaderCellDef ><strong>Address</strong></mat-header-cell>
+          <mat-cell *matCellDef="let user">{{user.address.suite}} <br> {{user.address.street}} <br> {{user.address.city}} <br> {{user.address.zipcode.substring(0,5)}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="phone">
+          <mat-header-cell *matHeaderCellDef ><strong>Phone</strong></mat-header-cell>
+          <mat-cell *matCellDef="let user">{{user.phone}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="company">
+          <mat-header-cell *matHeaderCellDef ><strong>Company</strong> </mat-header-cell>
+          <mat-cell *matCellDef="let user">{{user.company.name|uppercase}}</mat-cell>
+        </ng-container>
+      <mat-header-row *matHeaderRowDef="displayedColumns" color="primary"></mat-header-row>
+      <mat-row *matRowDef="let row; columns:displayedColumns"></mat-row>
+    </mat-table>
+  </div>
+</div>
